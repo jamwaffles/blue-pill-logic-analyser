@@ -1,18 +1,7 @@
-target remote :3333
+target remote | openocd -f "interface/stlink-v2.cfg" -f "target/stm32f1x.cfg" -c "gdb_port pipe; log_output openocd.log"
+
+# target remote :3333
 
 monitor arm semihosting enable
-
-# # send captured ITM to the file itm.fifo
-# # (the microcontroller SWO pin must be connected to the programmer SWO pin)
-# # 8000000 must match the core clock frequency
-# monitor tpiu config internal itm.fifo uart off 8000000
-
-# # OR: make the microcontroller SWO pin output compatible with UART (8N1)
-# # 2000000 is the frequency of the SWO pin
-# monitor tpiu config external uart off 8000000 2000000
-
-# # enable ITM port 0
-# monitor itm port 0 on
-
 load
 step

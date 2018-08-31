@@ -4,6 +4,7 @@
 extern crate cortex_m;
 #[macro_use]
 extern crate cortex_m_rt as rt;
+// extern crate panic_itm;
 extern crate panic_semihosting;
 extern crate stm32f103xx_hal as hal;
 extern crate stm32f103xx_usb;
@@ -163,7 +164,8 @@ fn main() -> ! {
     let mut flash = dp.FLASH.constrain();
     let mut rcc = dp.RCC.constrain();
 
-    let clocks = rcc.cfgr
+    let clocks = rcc
+        .cfgr
         .hse(8.mhz())
         .sysclk(48.mhz())
         .pclk1(24.mhz())
@@ -180,7 +182,7 @@ fn main() -> ! {
 
     let serial = cdc_acm::SerialPort::new(&usb_bus.allocator());
 
-    let usb_dev = UsbDevice::new(&usb_bus, UsbVidPid(0x5824, 0x27dd))
+    let usb_dev = UsbDevice::new(&usb_bus, UsbVidPid(0xeeee, 0xffff))
         .manufacturer("Fake company")
         .product("Serial port")
         .serial_number("TEST")

@@ -1,13 +1,7 @@
 [target.thumbv7m-none-eabi]
-runner = 'arm-none-eabi-gdb'
+runner = 'gdb-multiarch'
 rustflags = [
-	# Windows GCC options
-	# "-C", "linker=arm-none-eabi-gcc",
-	# "-C", "link-arg=-Wl,-Tlink.x",
-	# "-C", "link-arg=-nostartfiles",
-
-	# Unix LLVM
-	"-C", "link-arg=-Tlink.x",
+  "-C", "link-arg=-Tlink.x",
 ]
 
 [build]
