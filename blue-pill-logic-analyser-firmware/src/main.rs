@@ -37,6 +37,7 @@ fn main() -> ! {
     let usb_bus = UsbBus::usb(dp.USB, &mut rcc.apb1);
 
     let mut gpioa = dp.GPIOA.split(&mut rcc.apb2);
+    let mut gpiob = dp.GPIOB.split(&mut rcc.apb2);
     usb_bus
         .resetter(&clocks, &mut gpioa.crh, gpioa.pa12)
         .reset();
@@ -50,7 +51,7 @@ fn main() -> ! {
         .device_class(cdc::USB_CLASS_CDC)
         .build(&[&serial]);
 
-    let input_pin = gpioa.pa0.into_floating_input(&mut gpioa.crl);
+    let input_pin = gpiob.pb9.into_floating_input(&mut gpiob.crh);
 
     loop {
         usb_dev.poll();
@@ -72,7 +73,7 @@ fn main() -> ! {
             //     _ => {}
             // }
             if input_pin.is_high() {
-                serial.write(b"1\n").ok();
+                serial.write(b"255\n").ok();
             } else {
                 serial.write(b"0\n").ok();
             }

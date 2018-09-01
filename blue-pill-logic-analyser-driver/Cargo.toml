@@ -1,6 +1,6 @@
 [package]
+authors = ["James Waples <jamwaffles@gmail.com>"]
 name = "blue-pill-logic-analyser-driver"
 version = "0.1.0"
-authors = ["James Waples <jamwaffles@gmail.com>"]
-
 [dependencies]
+serial = "0.4.0"
