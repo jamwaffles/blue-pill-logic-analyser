@@ -4,15 +4,21 @@ name = "blue-pill-logic-analyser-firmware"
 version = "0.1.0"
 [dependencies]
 cortex-m = "0.5.4"
-stm32f103xx = "0.10.0"
-# TODO: this fork is used temporarily to be able to set USB clocks correctly in the examples
-stm32f103xx-hal = { git = "https://github.com/mvirkkunen/stm32f103xx-hal", rev = "71b5d90972abfcf66cd2fe4a9d4e28df2564abfb" }
-vcell = "0.1.0"
-usb-device = { git = "https://github.com/mvirkkunen/usb-device", rev = "2fc5e5d08beb3e1eab4fde4b7c04e1db147f3a7f" }
 cortex-m-rt = "0.5.2"
+cortex-m-rtfm = "0.3.4"
+cortex-m-rtfm-macros = "0.3.2"
 panic-itm = "0.2.0"
 panic-semihosting = "0.3.0"
+stm32f103xx = "0.10.0"
+vcell = "0.1.0"
+
+[dependencies.stm32f103xx-hal]
+git = "https://github.com/mvirkkunen/stm32f103xx-hal"
+rev = "71b5d90972abfcf66cd2fe4a9d4e28df2564abfb"
 
 [dependencies.stm32f103xx-usb]
 git = "https://github.com/mvirkkunen/stm32f103xx-usb"
-# rev = "3b38517b8516f6bd84a2622132292b83d89d1da1"
+
+[dependencies.usb-device]
+git = "https://github.com/mvirkkunen/usb-device"
+rev = "2fc5e5d08beb3e1eab4fde4b7c04e1db147f3a7f"
