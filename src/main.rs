@@ -50,6 +50,8 @@ fn main() -> ! {
         .device_class(cdc::USB_CLASS_CDC)
         .build(&[&serial]);
 
+    let input_pin = gpioa.pa0.into_floating_input(&mut gpioa.crl);
+
     loop {
         usb_dev.poll();
 
@@ -69,8 +71,11 @@ fn main() -> ! {
             //     }
             //     _ => {}
             // }
-
-            serial.write(b"1001\n").ok();
+            if input_pin.is_high() {
+                serial.write(b"1\n").ok();
+            } else {
+                serial.write(b"0\n").ok();
+            }
         }
     }
 }
