@@ -3,12 +3,12 @@ authors = ["James Waples <jamwaffles@gmail.com>"]
 name = "blue-pill-logic-analyser-firmware"
 version = "0.1.0"
 [dependencies]
-cortex-m = "0.5.4"
-cortex-m-rt = "0.5.2"
+cortex-m = "0.5.6"
+cortex-m-rt = "0.5.3"
 cortex-m-rtfm = "0.3.4"
 cortex-m-rtfm-macros = "0.3.2"
-panic-itm = "0.2.0"
-panic-semihosting = "0.3.0"
+panic-itm = "0.3.0"
+panic-semihosting = "0.4.0"
 stm32f103xx = "0.10.0"
 vcell = "0.1.0"
 
